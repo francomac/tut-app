@@ -1,17 +1,20 @@
 <template>
   <div id="app">
+    <NavBar />
     <img alt="Vue logo" src="./assets/logo.png" />
     <TodoApp msg="Welcome to Your Vue.js App" />
   </div>
 </template>
 
 <script>
+import NavBar from "./components/NavBar.vue";
 import TodoApp from "./components/TodoApp/TodoApp.vue";
 
 export default {
   name: "App",
   components: {
     TodoApp,
+    NavBar,
   },
 };
 </script>
