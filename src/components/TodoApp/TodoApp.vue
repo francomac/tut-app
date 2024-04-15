@@ -6,6 +6,10 @@
         <p>{{ todo.text }}</p>
       </li>
     </ul>
+
+    <form data-test="form" @submit.prevent="createTodo">
+      <input data-test="new-todo" type="text" v-model="newTodo" />
+    </form>
   </div>
 </template>
 
@@ -17,24 +21,26 @@ export default {
   },
   data() {
     return {
+      newTodo: "",
       todos: [
         {
           id: 1,
           text: "testing tut",
           completed: false,
         },
-        {
-          id: 2,
-          text: "testing tut2",
-          completed: false,
-        },
-        {
-          id: 3,
-          text: "testing tut3",
-          completed: false,
-        },
       ],
     };
+  },
+  methods: {
+    createTodo() {
+      this.todos.push({
+        id: this.todos.length + 1,
+        text: this.newTodo,
+        completed: false,
+      });
+
+      this.newTodo = "";
+    },
   },
 };
 </script>
