@@ -1,11 +1,22 @@
 <template>
   <div>
     <h1>Tut TODO</h1>
-    <ul>
-      <li v-for="todo in todos" :key="todo.id" data-test="todo">
-        <p>{{ todo.text }}</p>
-      </li>
-    </ul>
+
+    <div
+      v-for="todo in todos"
+      :key="todo.id"
+      data-test="todo"
+      :class="[todo.completed ? 'completed' : '']"
+    >
+      <p>
+        {{ todo.text }}
+        <input
+          type="checkbox"
+          v-model="todo.completed"
+          data-test="todo-checkbox"
+        />
+      </p>
+    </div>
 
     <form data-test="form" @submit.prevent="createTodo">
       <input data-test="new-todo" type="text" v-model="newTodo" />
@@ -45,3 +56,9 @@ export default {
 };
 </script>
 
+<style  scoped>
+.completed p {
+  text-decoration: line-through;
+  color: green;
+}
+</style>

@@ -21,4 +21,12 @@ describe("TodoApp", () => {
 
     expect(wrapper.vm.newTodo).toMatch("");
   });
+
+  it("should be able to complete todo", async () => {
+    const wrapper = mount(AppTodo);
+
+    await wrapper.get('[data-test="todo-checkbox"]').setChecked(true);
+
+    expect(wrapper.get('[data-test="todo"]').classes()).toContain("completed");
+  });
 });
